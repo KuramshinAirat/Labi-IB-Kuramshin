@@ -18,9 +18,16 @@ procedure TForm1.Button1Click(Sender: TObject); begin p:=StrToInt(edit1.text); S
 
 end;
 
-function TForm1.NOD(x, y: integer): integer; begin while (x<>0)and(y<>0) do if x>y then x :=x mod y else x:=y mod x; if x=0 then result:=y else result:=x; end;
+function TForm1.NOD(x, y: integer): integer; 
+begin 
+while (x<>0)and(y<>0) do if x>y 
+then x :=x mod y else x:=y mod x; 
+if x=0 then result:=y else result:=x; 
+end;
 
-function TForm1.NOK(x, y: integer): integer; begin result:=(x*y) div NOD(x,y); end;
+function TForm1.NOK(x, y: integer): integer; 
+begin result:=(x*y) div NOD(x,y); 
+end;
 
 end.
 
@@ -42,9 +49,39 @@ uses Unit1;
 
 { TForm2 }
 
-procedure TForm2.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit3.text:=IntToStr(k); edit4.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit4.text:=IntToStr(k); edit3.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit3.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit4.text:=IntToStr(k); end; end;
+procedure TForm2.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+if radiogroup1.ItemIndex=0 then 
+begin 
+k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit3.text:=IntToStr(k); 
+edit4.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then 
+begin 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit4.text:=IntToStr(k); edit3.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then 
+begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit3.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit4.text:=IntToStr(k); 
+end; 
+end;
 
-procedure TForm2.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form2.ComponentCount-1 do begin if (Form2.Components[i] is TEdit) then TEdit(Form2.Components[i]).Text:=''; end; end; end.
+procedure TForm2.Button2Click(Sender: TObject); var i:integer ; 
+begin 
+for i:=0 to Form2.ComponentCount-1 do begin if (Form2.Components[i] is TEdit) 
+then TEdit(Form2.Components[i]).Text:=''; 
+end; 
+end; 
+end.
 
 unit Unit3;
 
@@ -60,7 +97,32 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm3.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit4.text:=IntToStr(k); edit5.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit5.text:=IntToStr(k); edit4.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit4.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit5.text:=IntToStr(k); end; end;
+procedure TForm3.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+if radiogroup1.ItemIndex=0 then 
+begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit4.text:=IntToStr(k); 
+edit5.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then 
+begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit5.text:=IntToStr(k); 
+edit4.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then 
+begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit4.text:=IntToStr(k); 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit5.text:=IntToStr(k); 
+end; 
+end;
 
 procedure TForm3.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form3.ComponentCount-1 do begin if (Form3.Components[i] is TEdit) then TEdit(Form3.Components[i]).Text:=''; end; end; end.
 
@@ -78,9 +140,34 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm4.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit5.text:=IntToStr(k); edit6.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit6.text:=IntToStr(k); edit5.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit5.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit6.text:=IntToStr(k); end; end;
+procedure TForm4.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit5.text:=IntToStr(k); 
+edit6.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit6.text:=IntToStr(k); 
+edit5.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then 
+begin 
+k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit5.text:=IntToStr(k); 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit6.text:=IntToStr(k); 
+end; 
+end;
 
-procedure TForm4.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form4.ComponentCount-1 do begin if (Form4.Components[i] is TEdit) then TEdit(Form4.Components[i]).Text:=''; end; end; end.
+procedure TForm4.Button2Click(Sender: TObject); var i:integer; begin for i:=0 to Form4.ComponentCount-1 do begin if (Form4.Components[i] is TEdit) then TEdit(Form4.Components[i]).Text:=''; end; end; end.
 
 unit Unit5;
 
@@ -96,9 +183,38 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm5.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit6.text:=IntToStr(k); edit7.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit7.text:=IntToStr(k); edit6.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit6.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit7.text:=IntToStr(k); end; end;
+procedure TForm5.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit6.text:=IntToStr(k); 
+edit7.clear; 
+end;
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit7.text:=IntToStr(k); 
+edit6.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit6.text:=IntToStr(k); 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit7.text:=IntToStr(k); 
+end; 
+end;
 
-procedure TForm5.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form5.ComponentCount-1 do begin if (Form5.Components[i] is TEdit) then TEdit(Form5.Components[i]).Text:=''; end; end; end.
+procedure TForm5.Button2Click(Sender: TObject); var i:integer ; 
+begin for i:=0 to Form5.ComponentCount-1 do 
+begin if (Form5.Components[i] is TEdit) then TEdit(Form5.Components[i]).Text:=''; 
+end; 
+end; 
+end.
 
 unit Unit6;
 
@@ -118,9 +234,37 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm6.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); mass[5]:=StrToInt(edit6.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit7.text:=IntToStr(k); edit8.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit8.text:=IntToStr(k); edit7.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit7.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit8.text:=IntToStr(k); end; end;
+procedure TForm6.Button1Click(Sender: TObject); 
+begin mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+mass[5]:=StrToInt(edit6.Text); 
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit7.text:=IntToStr(k); 
+edit8.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit8.text:=IntToStr(k); 
+edit7.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit7.text:=IntToStr(k);
+k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit8.text:=IntToStr(k); 
+end; 
+end;
 
-procedure TForm6.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form6.ComponentCount-1 do begin if (Form6.Components[i] is TEdit) then TEdit(Form6.Components[i]).Text:=''; end; end; end.
+procedure TForm6.Button2Click(Sender: TObject); var i:integer ; 
+begin for i:=0 to Form6.ComponentCount-1 do 
+begin if (Form6.Components[i] is TEdit) then TEdit(Form6.Components[i]).Text:=''; 
+end; 
+end; 
+end.
 
 unit Unit7;
 
@@ -136,9 +280,40 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm7.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); mass[5]:=StrToInt(edit6.Text); mass[6]:=StrToInt(edit7.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit8.text:=IntToStr(k); edit9.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit9.text:=IntToStr(k); edit8.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit8.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit9.text:=IntToStr(k); end; end;
+procedure TForm7.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+mass[5]:=StrToInt(edit6.Text); 
+mass[6]:=StrToInt(edit7.Text); 
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit8.text:=IntToStr(k); 
+edit9.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit9.text:=IntToStr(k); 
+edit8.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit8.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit9.text:=IntToStr(k); 
+end; 
+end;
 
-procedure TForm7.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form7.ComponentCount-1 do begin if (Form7.Components[i] is TEdit) then TEdit(Form7.Components[i]).Text:=''; end; end; end.
+procedure TForm7.Button2Click(Sender: TObject); var i:integer ; 
+begin 
+for i:=0 to Form7.ComponentCount-1 do 
+begin if (Form7.Components[i] is TEdit) then TEdit(Form7.Components[i]).Text:=''; 
+end; 
+end; 
+end.
 
 unit Unit8;
 
@@ -154,7 +329,42 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm8.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); mass[5]:=StrToInt(edit6.Text); mass[6]:=StrToInt(edit7.Text); mass[7]:=StrToInt(edit8.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit9.text:=IntToStr(k); edit10.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit10.text:=IntToStr(k); edit9.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit9.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit10.text:=IntToStr(k); end; end; procedure TForm8.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form8.ComponentCount-1 do begin if (Form8.Components[i] is TEdit) then TEdit(Form8.Components[i]).Text:=''; end; end;
+procedure TForm8.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+mass[5]:=StrToInt(edit6.Text); 
+mass[6]:=StrToInt(edit7.Text); 
+mass[7]:=StrToInt(edit8.Text); 
+if radiogroup1.ItemIndex=0 then 
+begin 
+k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit9.text:=IntToStr(k); 
+edit10.clear;
+end; 
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]);
+edit10.text:=IntToStr(k); 
+edit9.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]);
+edit9.text:=IntToStr(k); 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit10.text:=IntToStr(k); 
+end; 
+end; 
+procedure TForm8.Button2Click(Sender: TObject); var i:integer ; 
+begin 
+for i:=0 to Form8.ComponentCount-1 do 
+begin if (Form8.Components[i] is TEdit) then TEdit(Form8.Components[i]).Text:=''; 
+end; 
+end;
 
 end.
 
@@ -172,10 +382,77 @@ uses Unit1;
 
 {$R *.dfm}
 
-procedure TForm9.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); mass[5]:=StrToInt(edit6.Text); mass[6]:=StrToInt(edit7.Text); mass[7]:=StrToInt(edit8.Text); mass[8]:=StrToInt(edit9.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit10.text:=IntToStr(k); edit11.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit11.text:=IntToStr(k); edit10.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit10.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit11.text:=IntToStr(k); end; end; procedure TForm9.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form9.ComponentCount-1 do begin if (Form9.Components[i] is TEdit) then TEdit(Form9.Components[i]).Text:=''; end; end;
+procedure TForm9.Button1Click(Sender: TObject); begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+mass[5]:=StrToInt(edit6.Text); 
+mass[6]:=StrToInt(edit7.Text); 
+mass[7]:=StrToInt(edit8.Text); 
+mass[8]:=StrToInt(edit9.Text); 
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit10.text:=IntToStr(k); 
+edit11.clear; 
+end; 
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit11.text:=IntToStr(k); 
+edit10.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit10.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit11.text:=IntToStr(k);
+end; 
+end; 
+procedure TForm9.Button2Click(Sender: TObject); var i:integer ; 
+begin 
+for i:=0 to Form9.ComponentCount-1 
+do begin if (Form9.Components[i] is TEdit) then TEdit(Form9.Components[i]).Text:=''; 
+end; 
+end;
 
 end.
 
-procedure TForm10.Button1Click(Sender: TObject); begin mass[0]:=StrToInt(edit1.Text); mass[1]:=StrToInt(edit2.Text); mass[2]:=StrToInt(edit3.Text); mass[3]:=StrToInt(edit4.Text); mass[4]:=StrToInt(edit5.Text); mass[5]:=StrToInt(edit6.Text); mass[6]:=StrToInt(edit7.Text); mass[7]:=StrToInt(edit8.Text); mass[8]:=StrToInt(edit9.Text); mass[9]:=StrToInt(edit10.Text); if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit11.text:=IntToStr(k); edit12.clear; end; if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit12.text:=IntToStr(k); edit11.clear; end; if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); edit11.text:=IntToStr(k); k:=form1.NOK(mass[0],mass[1]); for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); edit12.text:=IntToStr(k); end; end; procedure TForm10.Button2Click(Sender: TObject); var i:integer ; begin for i:=0 to Form10.ComponentCount-1 do begin if (Form10.Components[i] is TEdit) then TEdit(Form10.Components[i]).Text:=''; end; end;
+procedure TForm10.Button1Click(Sender: TObject); 
+begin 
+mass[0]:=StrToInt(edit1.Text); 
+mass[1]:=StrToInt(edit2.Text); 
+mass[2]:=StrToInt(edit3.Text); 
+mass[3]:=StrToInt(edit4.Text); 
+mass[4]:=StrToInt(edit5.Text); 
+mass[5]:=StrToInt(edit6.Text); 
+mass[6]:=StrToInt(edit7.Text); 
+mass[7]:=StrToInt(edit8.Text); 
+mass[8]:=StrToInt(edit9.Text); 
+mass[9]:=StrToInt(edit10.Text);
+if radiogroup1.ItemIndex=0 then begin k:=form1.NOD(mass[0],mass[1]);
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit11.text:=IntToStr(k); 
+edit12.clear; 
+end;
+if radiogroup1.ItemIndex=1 then begin k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit12.text:=IntToStr(k); 
+edit11.clear; 
+end; 
+if radiogroup1.ItemIndex=2 then begin k:=form1.NOD(mass[0],mass[1]);
+for i:=2 to (unit1.p-1) do k:=form1.nod(k,mass[i]); 
+edit11.text:=IntToStr(k); 
+k:=form1.NOK(mass[0],mass[1]); 
+for i:=2 to (unit1.p-1) do k:=form1.nok(k,mass[i]); 
+edit12.text:=IntToStr(k); 
+end; 
+end; 
+procedure TForm10.Button2Click(Sender: TObject); var i:integer ; 
+begin 
+for i:=0 to Form10.ComponentCount-1 do 
+begin if (Form10.Components[i] is TEdit) then TEdit(Form10.Components[i]).Text:=''; 
+end; 
+end;
 
 end.
